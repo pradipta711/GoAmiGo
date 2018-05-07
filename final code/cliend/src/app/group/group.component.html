@@ -1,0 +1,151 @@
+<app-navbar></app-navbar>
+<div class="row" align="left">
+  <div class="col-md-12">
+    <a class="navbar-brand">Group Name</a>
+    <tabset vertical ="true">
+      <tab>
+        <span *tabHeading>
+            <b style="color: deepskyblue">Chat</b> 
+        </span>
+        <app-chat></app-chat>
+    </tab>
+
+    <tab>
+      <span *tabHeading>
+          <b style="color: deepskyblue">Manage Budget</b>
+      </span>
+      <br/>
+      <div class="panel panel-default">
+          
+              <label>Total Budget:</label>
+               <label>{{total}}</label>
+              <label>Available Budget:</label>
+              <label>{{available}}</label>
+          <br/>
+              <label>Add new Expense</label><br/>
+              <label>Description:</label>
+              <input type="text" id="description" [(ngModel)]="description">
+              <label>Amount:</label>
+              <input type="text" id="amount" [(ngModel)]="amount">
+              <button class="btn btn-primary"  (click)=onUpdate()>Update</button>
+          
+      </div>
+<br/>
+      <div class='row' align="center">
+       <!-- Default panel contents -->
+       &nbsp;&nbsp;&nbsp;&nbsp;<label>Expenditure</label>
+       <br>
+           <br>
+                        <table class="table table-bordered table-condensed ">
+                          <thead>
+                           <th>Description</th>
+                           <th>Added By</th>
+                           <th>Amount</th>
+                           <th>Date added</th>
+                           <th>Modify</th>
+                          </thead>
+                          <tbody>
+                           <tr *ngFor="let tr of transactions">
+                              <td>{{tr.description}}</td>
+                              <td>{{tr.userId}}</td>
+                            <td>{{tr.txamount}}</td>
+                            <td>{{tr.txdate| date:'yyyy-MM-dd HH:mm a'}}</td>
+                            <td>
+                                <button class="btn btn-primary"  (click)=onDelete(tr.id)>Delete
+
+                                </button>
+                              </td>
+                           </tr>
+                          </tbody>
+                        </table>
+    </div>
+    
+
+
+
+
+
+  </tab>
+  <tab>
+    <span *tabHeading>
+        <b style="color: deepskyblue">Group media</b>
+    </span>
+        <app-image-gallery></app-image-gallery>
+        <app-fileupload></app-fileupload>
+  </tab>
+  <tab>
+    <span *tabHeading>
+        <b style="color: deepskyblue">Group Info</b>
+    </span>
+<!--  -->
+<div class='row' align="center">
+        <div class="panel panel-default">
+      <!-- Default panel contents -->
+            <div>
+              <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp; Destination: {{destination}}
+              </label>
+          <label>
+                &nbsp;&nbsp;&nbsp;&nbsp; From Date: {{fromdate}}
+          </label>
+              <label>
+                    &nbsp;&nbsp;&nbsp;&nbsp; To Date: {{todate}}
+              </label>
+            </div>
+         <div class='panel-heading'><strong>Users</strong></div>
+        <div class='panel-body'>
+                &nbsp;&nbsp;&nbsp;&nbsp;  <table class="table table-bordered table-condensed ">
+               <thead>
+                         <th>User Name</th>
+                        </thead>
+                        <tbody>
+                         <tr *ngFor="let user of members">
+                            <td>{{ user }}</td>
+                         </tr>
+                        </tbody>
+                      </table>
+              </div>
+        </div>
+      </div>
+    
+<!-- -->
+</tab>
+<tab>
+        <span *tabHeading>
+                <b style="color: deepskyblue">Suggestions</b>
+            </span>
+    <app-suggestion></app-suggestion>
+</tab>
+
+    </tabset>
+    <!-- <alert></alert>
+          <router-outlet></router-outlet> -->
+
+  </div>
+</div>
+<!-- <div class="row" align="left">
+  <div class="col-md-12">
+     <a class="navbar-brand">Group Name</a>
+     <nav class="navbar navbar-expand-lg" *ngIf='!showNav'>
+
+        
+        <ul class="nav navbar-nav" routerLinkActive="active">
+          <li class="nav-item"><a class="nav-link" [routerLink]="['/chat']">Chat</a></li>
+          <li class="nav-item"><a class="nav-link" [routerLink]="['/budget']">Manage Budget</a></li>
+
+          
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/groupphotos']">Group Photos</a>
+            </li> 
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/groupinfo']">Group Info</a></li>
+            <li class="nav item"><a class="nav-link" [routerLink]="['/suggestions']">Suggestions</a></li>
+              
+        </ul>
+    </nav>
+      <div class="container">
+
+          <alert></alert>
+          <router-outlet></router-outlet>
+      </div>
+  </div>
+</div> -->

@@ -1,0 +1,93 @@
+<app-navbar></app-navbar>
+<html>
+<head>
+<style>
+table.table-striped{
+    border:1px solid rgb(19, 19, 41);
+    margin-top:20px;
+  }
+table.table-striped > thead > tr > th{
+    border:1px solid rgb(19, 19, 41);
+}
+table.table-striped > tbody > tr > td{
+    border:1px solid rgb(19, 19, 41);
+}
+
+.page-center{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+width: 100vw;
+overflow-y:default; 
+}
+
+body, html {
+height: 100%;
+margin: 0;
+}
+
+.bg {
+/* The image used */
+background-image: url("assets/Backp.jpg");
+
+/* Full height */
+height: 100%; 
+
+/* Center and scale the image nicely */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.search-form{
+padding: 25px;
+background: #c5f4f7;
+}
+
+</style>
+</head>
+
+<div class="bg">
+    <div class="container page-center">
+      <div class="mx-auto" style="width: 1000px;">
+         <div class='row'>
+             <div class="panel panel-default">
+   <!-- Default panel contents -->
+   <div class="search-form">
+      <h3 style="margin-bottom: 30px; text-align: left;">Search people!</h3>
+
+      <label>Destination:</label>
+        <input type="text" id="dest" required="required"/>
+          <button class="btn btn-primary" type="submit" (click)=onSubmit()>Submit</button>
+     
+
+    <h5 style="margin-top: 30px; text-align: left;"><strong>Travellers List</strong></h5>
+            <div class='panel-body' *ngIf="trips">
+                   
+                  <table class="table table-bordered">
+                    <thead>
+                     <th>Name</th>
+                     <th>Source</th>
+                     <th>Destination</th>
+                     <th>Start Date</th>
+                     <th>End Date</th>
+                    </thead>
+                    <tbody>
+                     <tr *ngFor="let trip of trips">
+                      <td>{{trip.name}} </td>
+                      <td>{{trip.source}}</td>
+                      <td>{{trip.destination}}</td>
+                      <td>{{trip.todate}}</td>
+                      <td>{{trip.fromdate}}</td>
+                     </tr>
+                    </tbody>
+                  </table>
+           </div>
+      </div>
+    </div>
+	</div>
+	</div>
+  </div>
+  </div>
+</html>

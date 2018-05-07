@@ -1,0 +1,157 @@
+<app-navbar></app-navbar>
+<html>
+<head>
+<style>
+.page-center{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+width: 100vw;
+overflow: auto;
+}
+
+body, html {
+height: 100%;
+margin: 0;
+}
+.bg {
+/* The image used */
+background-image: url("assets/Backp.jpg");
+
+/* Full height */
+height: 100%; 
+
+/* Center and scale the image nicely */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+.plan-form{
+padding: 25px;
+background: #c5f4f7;
+}
+</style>
+</head>
+<div>
+	  
+
+<div class="bg">
+<div class="container page-center">
+
+		<form [formGroup]="form" class="plan-form" (submit)="onPlanSUbmit('custom-modal-1')" ngNativeValidate>
+			<h3 style="margin-top: 30px; text-align:center;"><strong>Plan Trip</strong></h3>
+				<br style="clear: both">
+
+				<div id="datepicker" class="calendar"></div>
+					<div class="form-group">
+						<div>
+						<label><strong>Source:</strong></label>
+						<input type="text" name="source" placeholder="Search for Source" class="form-control" formControlName="source" #source required="true">
+						</div>
+
+					     <div>
+							<div>
+								<label><strong>Destination:</strong></label>
+								<input type="text" name="destination" placeholder="Search for Destination" class="form-control" formControlName="destination" #destination  required="true" >
+								</div>
+						  </div>	
+						
+
+					</div>
+
+					<div class="form-group">
+
+						<div class="input-group registration-date-time">
+							<span class="input-group-addon" id="basic-addon1"></span>
+							
+							<label><strong>From:</strong></label>
+							<input class="form-control" id="fromdate" type="date" name="fromdate" required="true" formControlName="fromdate">
+							
+							<label><strong>To:</strong></label>
+							<input class="form-control" id="todate" type="date" name="todate"  required="true" formControlName="todate">
+							
+						</div>
+					</div>
+
+					<div class="form-group">
+
+							<label><strong>Set Budget:</strong></label>
+							<input type="text" name="amount" required="true" formControlName="amount">
+							
+					</div>
+					
+					<div class="form-group">
+						
+							<input type="radio" name="lone" value="lone" formControlName="lone" required="true"/> <strong>Lone</strong>
+						
+
+							<input type="radio" name="lone" value="group" formControlName="lone" required="true"	/><strong>Group</strong>
+					
+					</div>
+					
+					<div class="row show-hide-message">
+						<div [ngClass]="messageClass">
+						  {{ message }}
+						</div>
+					  </div>
+
+
+
+	<button type="submit" id="submit" name="submit" class="btn btn-primary" >Save</button>
+	<button type="button" id="reset" name="reset" class="btn btn-primary" (click)="reset()">Reset</button>
+			</form>
+</div>
+</div>
+</div>		
+</html>
+<modal id="custom-modal-1">
+	<div class="custom-modal">
+		<div class="custom-modal-body">
+			<h2>Group Options</h2>
+			<table>
+				<tr><td><button class="btn btn-primary" (click)="createGroup();">Create A Group</button></td>
+					<td><button class="btn btn-primary" (click)="searchPeople();">Search People</button></td>
+					
+				</tr>
+				
+				<!--<tr>
+				<td>Please enter userName:</td>	
+				<td><input type="text" [(ngModel)]="userName"/><button (click)="addToGroup()">Add Member</button></td>	
+				</tr>!-->
+
+			</table>
+		</div>
+		<div id="div1" style="visibility: hidden">
+				<div class="custom-modal-body">
+				<table >
+				<tr>
+					<td><strong>Please enter userName:</strong></td>	
+					<td><input type="text" [(ngModel)]="userName"/><button class="btn btn-primary" (click)="addToGroup()">Add Member</button></td>
+		
+				</tr>
+				  
+				</table>
+				<table class="table table-bordered table-condensed ">
+					<thead>
+					 <th>UserID</th>
+					 <th>Delete</th> 
+					</thead>
+					<tbody>
+					 <tr *ngFor="let user of members">
+						<td>{{user}}</td>
+					  <td>
+						  <button class="btn btn-primary"  (click)=onDelete(user)>Delete
+						  </button>
+
+						</td>
+					 </tr>
+					</tbody>
+				  </table>
+			 <button class="btn btn-primary" (click)="Save();">Save</button>
+			<button class="btn btn-primary" (click)="closeModal('custom-modal-1');">Close</button>
+				</div>
+		</div>
+		</div>
+	<div class="custom-modal-background"></div>
+</modal>

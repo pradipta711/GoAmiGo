@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+
+<style>
+  .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      width: 80%
+  }
+
+  .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .container {
+      padding: 2px 8px;
+  }
+</style>
+
+
+<h3 style="margin-top: 30px; text-align: center;">Welcome {{this.username}}!</h3>
+
+<div class="container">
+ <i> Search over a million flights, hotels, packages, and more.
+     No cancellation fee to change or cancel almost any hotel reservation </i>
+</div>
+
+<br>
+
+<div class="container">
+  <h6>Book trip using exclusive Promo Code</h6>
+  <div class="row">
+      <div class="col-md-4">
+          <div class="card">
+              <img src="assets/credit-card.jpg" alt="Avatar" style="width:100%">
+              <div class="container">
+                  <h4><b>Earn 25,000 GoAmiGo Rewards bonus points</b></h4>
+                  <p>Promo code: GOAMIGO25</p>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="card">
+              <img src="assets/daily-deal.png" alt="Avatar" style="width:100%">
+              <div class="container">
+                  <h5><b>Get 40% off featured hotels and save on flights</b></h5>
+                  <p>Promo code: GOAMIGODAILY</p>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="card">
+              <img src="assets/last-minute.jpg" alt="Avatar" style="width:100%">
+              <div class="container">
+                  <h4><b>Last minute travel Deals</b></h4>
+                 <p>Promo code: GOAMIGOLAST</p>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+</div>

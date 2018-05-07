@@ -1,0 +1,163 @@
+<app-navbar></app-navbar>
+<div class="row" align="left">
+  <div class="col-md-12">
+    <a class="navbar-brand">Group Name</a>
+    <tabset vertical ="true">
+
+    <tab>
+      <span *tabHeading>
+          <b style="color: deepskyblue">Manage Budget</b>
+      </span>
+      <br/>
+      <div>
+          
+              <label>Total Budget:</label>
+               <label>{{total}}</label>
+              <label>Available Budget:</label>
+              <label>{{available}}</label>
+          <br/>
+              <label>Add new Expense</label><br/>
+              <label>Description:</label>
+              <input type="text" id="description" [(ngModel)]="description">
+              <label>Amount:</label>
+              <input type="text" id="amount" [(ngModel)]="amount">
+              <button class="btn btn-primary"  (click)=onUpdate()>Update</button>
+          
+      </div>
+<br/>
+      <div class='row'>
+          <div class="panel panel-default">
+       <!-- Default panel contents -->
+               <div class='panel-heading'>Expenditure List</div>
+                      <div class='panel-body'>
+                        <table class="table table-bordered table-condensed ">
+                          <thead>
+                           <th>Description</th>
+                           <th>Amount</th>
+                           <th>Date added</th>
+                           <th>Modify</th>
+                          </thead>
+                          <tbody>
+                           <tr *ngFor="let tr of transactions">
+                              <td>{{tr.description}}</td>
+                             
+                            <td>{{tr.amount}}</td>
+                            <td>{{tr.date| date:'yyyy-MM-dd HH:mm a'}}</td>
+                            <td>
+                                <button class="btn btn-primary"  (click)=onDelete(tr.id)>Delete
+
+                                </button>
+                              </td>
+                           </tr>
+                          </tbody>
+                        </table>
+                 </div>
+          </div>
+    </div>
+    
+
+
+
+
+
+  </tab>
+  <tab>
+    <span *tabHeading>
+        <b style="color: deepskyblue">Trip media</b>
+    </span>
+        Add content here
+  </tab>
+ 
+<tab>
+    <span *tabHeading>
+        <b style="color: deepskyblue">Suggestions</b>
+    </span>
+
+
+<div class="container" >
+    <h1 style="color:blueviolet">{{ title }}</h1>
+  
+    <!-- this creates a google map on the page with the given lat/lng from -->
+    <!-- the component as the initial center of the map: -->
+
+    <div class="form-group">
+      <input placeholder="search for location" type="text" class="form-control" #search>
+    </div>
+
+    <div class="form-group">
+    <label>Search </label>
+        <div class="form-control">
+            <label class="radio">
+           <input  type="radio" name="search" value="Restauants" ng-model="search" (click)="getval1()">
+                Restaurants
+            </label>
+            <label class="radio">
+             <input name="search" type="radio" value="ATM"  ng-model="search" (click)="getval2()">
+                ATM
+            </label>
+        </div>
+       
+    <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" > 
+    <agm-marker *ngFor="let restaurant of restaurantsList;" [latitude]="restaurant.lat" [longitude]="restaurant.lng"  [iconUrl]="restaurant.iconUrl">
+        <agm-info-window>{{restaurant.toString()}}</agm-info-window>
+    </agm-marker>
+    </agm-map>
+      
+          
+    <div id="div1" *ngIf="rstaurantnameList">
+        <table *ngFor="let restaurant of restaurantsList" class="list-group-item licolor">
+            <td>
+              <tr><strong> Restaurant name:</strong> {{restaurant.name}}</tr>
+              <tr><strong> Address</strong> {{restaurant.vicinity}}</tr>
+              <tr><strong> Rating:</strong> {{restaurant.rating}}</tr>   
+          </td> 
+         </table>
+    </div>
+    
+        
+    <div id="div2" *ngIf="atmnameList" >
+        <table *ngFor="let atm of atmList" class="list-group-item licolor">
+                <td>
+                  <tr><strong> atmname:</strong>{{atm.name}}</tr>
+                  <tr><strong> Address:</strong> {{atm.vicinity}}</tr> 
+                </td> 
+        </table>
+    </div>
+        
+       </div>
+    
+  </div>
+</tab>
+
+    </tabset>
+    <!-- <alert></alert>
+          <router-outlet></router-outlet> -->
+
+  </div>
+</div>
+<!-- <div class="row" align="left">
+  <div class="col-md-12">
+     <a class="navbar-brand">Group Name</a>
+     <nav class="navbar navbar-expand-lg" *ngIf='!showNav'>
+
+        
+        <ul class="nav navbar-nav" routerLinkActive="active">
+          <li class="nav-item"><a class="nav-link" [routerLink]="['/chat']">Chat</a></li>
+          <li class="nav-item"><a class="nav-link" [routerLink]="['/budget']">Manage Budget</a></li>
+
+          
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/groupphotos']">Group Photos</a>
+            </li> 
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/groupinfo']">Group Info</a></li>
+            <li class="nav item"><a class="nav-link" [routerLink]="['/suggestions']">Suggestions</a></li>
+              
+        </ul>
+    </nav>
+      <div class="container">
+
+          <alert></alert>
+          <router-outlet></router-outlet>
+      </div>
+  </div>
+</div> -->

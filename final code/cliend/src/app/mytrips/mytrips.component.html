@@ -1,0 +1,115 @@
+<app-navbar></app-navbar>
+<html>
+<head>
+<style>
+    .page-center{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+width: 100vw;
+overflow: auto;
+}
+
+body, html {
+height: 100%;
+margin: 0;
+}
+
+.bg {
+/* The image used */
+background-image: url("assets/Backp.jpg");
+
+/* Full height */
+height: 100%; 
+
+/* Center and scale the image nicely */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.mytrip-form{
+padding: 25px;
+background: #c5f4f7;
+}
+    </style>
+</head>
+<div class="bg">
+<div class="mx-auto" style="width: 1000px;">
+<div class='row'>
+<div class="panel panel-default">
+   <!-- Default panel contents -->
+<h3 style="margin-top: 30px; text-align: center;"><strong>My Trips</strong></h3>
+   
+
+<div class="mytrip-form">
+    <h5 style="margin-top: 30px; text-align: left;"><strong>Lone Trips</strong></h5>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+         <th>Source</th>
+         <th>Destination</th>
+         <th>From</th>
+         <th>To</th>
+         <!-- <th>Modify</th>
+         <th>Delete</th> -->
+         <th>View</th>
+</tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let trip of mytrips">
+           
+          <td *ngIf="trip.lone == 'lone'">{{trip.source}}</td>
+          <td *ngIf="trip.lone == 'lone'">{{trip.destination}}</td>
+          <td *ngIf="trip.lone == 'lone'">{{trip.fromdate}}</td>
+          <td *ngIf="trip.lone == 'lone'">{{trip.todate}}</td>
+          <!-- <td *ngIf="trip.lone == 'lone'"><button class="btn btn-primary" type="submit">Update</button></td> -->
+          <!-- <td *ngIf="trip.lone == 'lone'"><button class="btn btn-primary" (click) = "deleteTrip(trip)">Delete</button></td> -->
+          <td *ngIf="trip.lone == 'lone'"><button class="btn btn-primary" type="button" (click)='onViewLoneTrip(trip.tripId)'>View</button>
+          </td>
+         </tr>
+        </tbody>
+      </table>
+
+    </div>
+    
+    <div class="mytrip-form">
+
+    <h5 style="margin-top: 30px; text-align: left;"><strong>Group Trips</strong> </h5>
+
+    <div class='panel-body'>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+          <th>Source</th>
+          <th>Destination</th>
+         <th>From</th>
+         <th>To</th>
+         <!-- <th>Modify</th> -->
+         <th>View</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let trip of mytrips">
+          <td *ngIf="trip.lone == 'group'">{{trip.source}}</td>
+          <td *ngIf="trip.lone == 'group'">{{trip.destination}}</td>
+          <td *ngIf="trip.lone == 'group'">{{trip.fromdate}}</td>
+          <td *ngIf="trip.lone == 'group'">{{trip.todate}}</td>
+          <!-- <td *ngIf="trip.lone == 'group'"><button class="btn btn-primary" type="submit">Update</button></td> -->
+          
+          <td *ngIf="trip.lone == 'group'"><button class="btn btn-primary" type="button" (click)='onViewGroupTrip(trip.tripId)'>View</button>
+
+            </td>
+          </tr>
+        </tbody>
+           </table>
+
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</html>
